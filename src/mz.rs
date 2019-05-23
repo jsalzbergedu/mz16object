@@ -96,50 +96,6 @@ where
     section: &'data [u8],
 }
 
-impl<'data, 'file> Iterator for MZSectionIterator<'data, 'file>
-where
-    'data: 'file,
-{
-    type Item = MZSection<'data, 'file>;
-    fn next(&mut self) -> Option<MZSection<'data, 'file>> {
-        unimplemented!();
-    }
-}
-
-type Dummy = u8;
-
-/// An iterator over the symbols of an MZFile
-#[derive(Debug)]
-pub struct MZSymbolIterator<'data, 'file>
-where
-    'data: 'file,
-{
-    index: usize,
-    exports: &'data Dummy,
-    imports: &'file Dummy,
-}
-
-impl<'data, 'file> Iterator for MZSymbolIterator<'data, 'file>
-where
-    'data: 'file,
-{
-    type Item = (SymbolIndex, Symbol<'data>);
-    fn next(&mut self) -> Option<(SymbolIndex, Symbol<'data>)> {
-        unimplemented!();
-    }
-}
-
-/// An iterator over the relocations in an MZ file
-#[derive(Debug)]
-pub struct MZRelocationIterator;
-
-impl Iterator for MZRelocationIterator {
-    type Item = (u64, Relocation);
-    fn next(&mut self) -> Option<(u64, Relocation)> {
-        unimplemented!();
-    }
-}
-
 impl<'data, 'file> ObjectSection<'data> for MZSection<'data, 'file>
 where
     'data: 'file,
@@ -186,6 +142,50 @@ where
     }
 
     fn relocations(&self) -> MZRelocationIterator {
+        unimplemented!();
+    }
+}
+
+impl<'data, 'file> Iterator for MZSectionIterator<'data, 'file>
+where
+    'data: 'file,
+{
+    type Item = MZSection<'data, 'file>;
+    fn next(&mut self) -> Option<MZSection<'data, 'file>> {
+        unimplemented!();
+    }
+}
+
+type Dummy = u8;
+
+/// An iterator over the symbols of an MZFile
+#[derive(Debug)]
+pub struct MZSymbolIterator<'data, 'file>
+where
+    'data: 'file,
+{
+    index: usize,
+    exports: &'data Dummy,
+    imports: &'file Dummy,
+}
+
+impl<'data, 'file> Iterator for MZSymbolIterator<'data, 'file>
+where
+    'data: 'file,
+{
+    type Item = (SymbolIndex, Symbol<'data>);
+    fn next(&mut self) -> Option<(SymbolIndex, Symbol<'data>)> {
+        unimplemented!();
+    }
+}
+
+/// An iterator over the relocations in an MZ file
+#[derive(Debug)]
+pub struct MZRelocationIterator;
+
+impl Iterator for MZRelocationIterator {
+    type Item = (u64, Relocation);
+    fn next(&mut self) -> Option<(u64, Relocation)> {
         unimplemented!();
     }
 }
