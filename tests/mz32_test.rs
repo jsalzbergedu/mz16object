@@ -6,8 +6,10 @@ use mz16object::object::{
     SymbolIndex, SymbolKind,
 };
 
+/// The portable executable file
 static FILE: &[u8; 28160] = include_bytes!("../resources/helloworld32.exe");
 
+/// Test that the object library knows that the machine is 32 bit
 #[test]
 fn machine() {
     let file = ObjectFile::parse(FILE);
@@ -100,6 +102,7 @@ fn segments() {
     }
 }
 
+/// Test the sections of the object file
 #[test]
 fn sections() {
     let file = ObjectFile::parse(FILE);
@@ -206,6 +209,7 @@ fn sections() {
     }
 }
 
+/// Test all the dynamic symbols in the object file
 #[test]
 fn dynamic_symbols() {
     let file = ObjectFile::parse(FILE);
@@ -236,8 +240,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("CloseHandle"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -249,8 +253,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("CreateEventA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -262,8 +266,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("CreateFileA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -275,8 +279,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("ExitProcess"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -288,8 +292,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("FlushFileBuffers"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -301,8 +305,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetACP"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -314,8 +318,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetCPInfo"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -327,8 +331,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetCommandLineA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -340,8 +344,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetCommandLineW"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -353,8 +357,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetCurrentThreadId"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -366,8 +370,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetFileType"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -379,8 +383,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetLastError"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -392,8 +396,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetModuleFileNameA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -405,8 +409,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetModuleFileNameW"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -418,8 +422,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetModuleHandleA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -431,8 +435,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetOEMCP"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -444,8 +448,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetProcAddress"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -457,8 +461,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetStdHandle"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -470,8 +474,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("GetVersion"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -483,8 +487,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("LoadLibraryA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -496,8 +500,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("MultiByteToWideChar"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -509,8 +513,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("SetConsoleCtrlHandler"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -522,8 +526,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("SetEnvironmentVariableA"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -535,8 +539,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("SetFilePointer"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -548,8 +552,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("SetStdHandle"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -561,8 +565,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("SetUnhandledExceptionFilter"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -574,8 +578,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("UnhandledExceptionFilter"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -587,8 +591,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("VirtualAlloc"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -600,8 +604,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("VirtualFree"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -613,8 +617,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("VirtualQuery"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -626,8 +630,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("WideCharToMultiByte"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -639,8 +643,8 @@ fn dynamic_symbols() {
         assert_eq!(true, symbol.is_global());
         assert_eq!(false, symbol.is_local());
         assert_eq!(Some("WriteFile"), symbol.name());
-        assert_eq!(0, symbol.address());
-        assert_eq!(0, symbol.size());
+        assert_eq!(0x0000, symbol.address());
+        assert_eq!(0x0000, symbol.size());
     }
 
     {
@@ -648,6 +652,7 @@ fn dynamic_symbols() {
     }
 }
 
+/// Test all of the symbols in the exectuable
 #[test]
 fn symbols() {
     let file = ObjectFile::parse(FILE);
@@ -661,6 +666,8 @@ fn symbols() {
         assert!(symbol.is_none());
     }
 }
+
+/// Test the section by name function
 #[test]
 fn section_by_name() {
     let file = ObjectFile::parse(FILE);
@@ -671,6 +678,7 @@ fn section_by_name() {
     assert!(file.section_by_name("Nope").is_none());
 }
 
+/// Test the section by index function
 #[test]
 fn section_by_index() {
     let file = ObjectFile::parse(FILE);
@@ -683,6 +691,7 @@ fn section_by_index() {
     assert_eq!(Some("AUTO"), section.name());
 }
 
+/// Test the symbol by index function
 #[test]
 fn symbol_by_index() {
     let file = ObjectFile::parse(FILE);
@@ -692,6 +701,7 @@ fn symbol_by_index() {
     assert!(symbol.is_none()); // odd, but its what the library reports.
 }
 
+/// Test the symbol map function
 #[test]
 fn symbol_map() {
     let file = ObjectFile::parse(FILE);
@@ -702,6 +712,7 @@ fn symbol_map() {
     assert_eq!(0, symbol_map.symbols().len());
 }
 
+/// Test the is little endian function
 #[test]
 fn is_little_endian() {
     let file = ObjectFile::parse(FILE);
@@ -710,6 +721,7 @@ fn is_little_endian() {
     assert!(file.is_little_endian());
 }
 
+/// Test the has debug symbols function
 #[test]
 fn has_debug_symbols() {
     let file = ObjectFile::parse(FILE);
@@ -718,6 +730,7 @@ fn has_debug_symbols() {
     assert!(!file.has_debug_symbols());
 }
 
+/// Test the entry point function
 #[test]
 fn entry() {
     let file = ObjectFile::parse(FILE);
